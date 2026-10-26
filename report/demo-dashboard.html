@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Northwind Supply Co. Weekly Operating Dashboard</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;padding:32px 20px 64px;background:#f6f6f4;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#101828;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto}
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px}
+  h1{font-size:24px;margin:0 0 6px;letter-spacing:-0.4px}
+  .sub{color:#667085;font-size:13px;margin:0}
+  .badge{background:#fff;border:1px solid #e4e7ec;border-radius:999px;padding:7px 14px;
+    font-size:12px;color:#475467;font-weight:600;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:22px}
+  .kpi{background:#fff;border:1px solid #e9eaf1;border-radius:14px;padding:18px 20px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#98a2b3;font-weight:700;margin-bottom:8px}
+  .kpi .val{font-size:27px;font-weight:750;letter-spacing:-.8px;line-height:1}
+  .kpi .delta{font-size:12px;font-weight:650;margin-top:8px;color:#12b76a}
+  .kpi .delta.neg{color:#f04438}
+  .card{background:#fff;border:1px solid #e9eaf1;border-radius:16px;padding:22px 24px;margin-bottom:18px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .card h2{font-size:14px;margin:0 0 2px;letter-spacing:-.1px}
+  .card .hint{font-size:12px;color:#98a2b3;margin:0 0 18px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:#98a2b3;
+    padding:0 0 10px;font-weight:700;border-bottom:1px solid #eef0f5}
+  td{padding:11px 0;border-bottom:1px solid #f2f4f8;color:#475467}
+  tr:last-child td{border-bottom:none}
+  .strong{color:#101828;font-weight:650}
+  .mono{font-variant-numeric:tabular-nums}
+  .up{color:#12b76a;font-weight:650} .down{color:#f04438;font-weight:650}
+  .pill{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px}
+  .pill.warn{background:#fef3f2;color:#b42318}
+  .pill.good{background:#ecfdf3;color:#027a48}
+  .brief{background:linear-gradient(135deg,#1f2937 0%,#111827 100%);color:#e5e7eb;border:none}
+  .brief h2{color:#fff}
+  .brief .hint{color:#9ca3af}
+  .brief li{font-size:13.5px;line-height:1.65;margin-bottom:11px;color:#e5e7eb}
+  .brief b{color:#fff}
+  .brief ol{margin:0;padding-left:20px}
+  .foot{text-align:center;font-size:11.5px;color:#98a2b3;margin-top:28px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div>
+      <h1>Northwind Supply Co.</h1>
+      <p class="sub">Weekly operating dashboard &middot; last 12 weeks &middot; sample data</p>
+    </div>
+    <div class="badge">Auto-generated &middot; Monday 07:00</div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="label">Revenue (12w)</div>
+      <div class="val">$636,300</div>
+      <div class="delta">&#9650; 14.5% last 4w vs prior 4w</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Blended CAC</div>
+      <div class="val">$34</div>
+      <div class="delta neg">&#9660; 6.2%: spend up, new customers flat</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Contribution margin</div>
+      <div class="val">57.4%</div>
+      <div class="delta">&#9650; 2.1 pts</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Repeat purchase rate</div>
+      <div class="val">31.8%</div>
+      <div class="delta">&#9650; 4.4 pts</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Weekly revenue</h2>
+    <p class="hint">Revenue is rising, and the last three weeks lean on discounts (see the brief below).</p>
+    <svg viewBox="0 0 760 240" width="100%" height="auto" role="img" aria-label="Weekly revenue trend">
+<defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#0f766e" stop-opacity="0.20"/><stop offset="100%" stop-color="#0f766e" stop-opacity="0"/></linearGradient></defs>
+<line x1="38" y1="202.0" x2="722" y2="202.0" stroke="#e8eaf0" stroke-width="1"/><text x="30" y="206.0" font-size="10" fill="#98a2b3" text-anchor="end">36k</text><line x1="38" y1="161.0" x2="722" y2="161.0" stroke="#e8eaf0" stroke-width="1"/><text x="30" y="165.0" font-size="10" fill="#98a2b3" text-anchor="end">45k</text><line x1="38" y1="120.0" x2="722" y2="120.0" stroke="#e8eaf0" stroke-width="1"/><text x="30" y="124.0" font-size="10" fill="#98a2b3" text-anchor="end">54k</text><line x1="38" y1="79.0" x2="722" y2="79.0" stroke="#e8eaf0" stroke-width="1"/><text x="30" y="83.0" font-size="10" fill="#98a2b3" text-anchor="end">62k</text><line x1="38" y1="38.0" x2="722" y2="38.0" stroke="#e8eaf0" stroke-width="1"/><text x="30" y="42.0" font-size="10" fill="#98a2b3" text-anchor="end">71k</text>
+<path d="M 38.0,178.2 L 100.2,166.0 L 162.4,183.3 L 224.5,148.3 L 286.7,127.3 L 348.9,138.5 L 411.1,111.9 L 473.3,95.6 L 535.5,117.5 L 597.6,84.4 L 659.8,68.0 L 722.0,56.8 L 722.0,202 L 38.0,202 Z" fill="url(#g1)"/>
+<path d="M 38.0,178.2 L 100.2,166.0 L 162.4,183.3 L 224.5,148.3 L 286.7,127.3 L 348.9,138.5 L 411.1,111.9 L 473.3,95.6 L 535.5,117.5 L 597.6,84.4 L 659.8,68.0 L 722.0,56.8" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="38.0" cy="178.2" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="100.2" cy="166.0" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="162.4" cy="183.3" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="224.5" cy="148.3" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="286.7" cy="127.3" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="348.9" cy="138.5" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="411.1" cy="111.9" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="473.3" cy="95.6" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="535.5" cy="117.5" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="597.6" cy="84.4" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="659.8" cy="68.0" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/><circle cx="722.0" cy="56.8" r="3" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+<circle cx="722.0" cy="56.8" r="6" fill="#0f766e" opacity="0.18"/>
+<text x="718.0" y="42.8" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">$67,200</text>
+<text x="38.0" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W1</text><text x="100.2" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W2</text><text x="162.4" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W3</text><text x="224.5" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W4</text><text x="286.7" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W5</text><text x="348.9" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W6</text><text x="411.1" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W7</text><text x="473.3" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W8</text><text x="535.5" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W9</text><text x="597.6" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W10</text><text x="659.8" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W11</text><text x="722.0" y="220" font-size="10" fill="#98a2b3" text-anchor="middle">W12</text>
+</svg>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Revenue by channel</h2>
+      <p class="hint">Where the money comes from</p>
+      <table>
+        <thead><tr><th>Channel</th><th>Revenue</th><th>Share</th><th>CAC</th><th></th></tr></thead>
+        <tbody><tr><td class="strong">Paid Social</td><td>$241,794</td><td>38%</td><td class="mono">$42</td><td><span class="pill warn">CAC above target</span></td></tr><tr><td class="strong">Google / Search</td><td>$152,712</td><td>24%</td><td class="mono">$28</td><td></td></tr><tr><td class="strong">Email / SMS</td><td>$101,808</td><td>16%</td><td class="mono">—</td><td><span class="pill good">Best margin</span></td></tr><tr><td class="strong">Direct / Organic</td><td>$89,082</td><td>14%</td><td class="mono">—</td><td></td></tr><tr><td class="strong">Influencer</td><td>$50,904</td><td>8%</td><td class="mono">$55</td><td><span class="pill warn">CAC above target</span></td></tr></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Acquisition cost</h2>
+      <p class="hint">Cost to win one new customer, paid channels only. Dashed line is the $28 target. Email and direct are owned channels.</p>
+      <svg viewBox="0 0 360 210" width="100%" height="auto" role="img" aria-label="CAC by channel"><rect x="52.5" y="80.4" width="55.0" height="99.6" rx="4" fill="#0f766e" opacity="0.85"/><text x="80.0" y="195" font-size="10" fill="#667085" text-anchor="middle">Paid Social</text><text x="80.0" y="74.4" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">$42</text><rect x="152.5" y="113.6" width="55.0" height="66.4" rx="4" fill="#0f766e" opacity="0.68"/><text x="180.0" y="195" font-size="10" fill="#667085" text-anchor="middle">Google</text><text x="180.0" y="107.6" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">$28</text><rect x="252.5" y="49.6" width="55.0" height="130.4" rx="4" fill="#0f766e" opacity="1.00"/><text x="280.0" y="195" font-size="10" fill="#667085" text-anchor="middle">Influencer</text><text x="280.0" y="43.6" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">$55</text><line x1="30" y1="113.6" x2="330" y2="113.6" stroke="#b42318" stroke-width="1.2" stroke-dasharray="4 4"/></svg>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Top products: revenue, margin and 4-week change</h2>
+    <p class="hint">Volume and profit differ, so read margin next to revenue</p>
+    <table>
+      <thead><tr><th>Product</th><th>Revenue</th><th>Margin</th><th>4w change</th></tr></thead>
+      <tbody><tr><td class="strong">Trail Runner 2.0</td><td class="mono">$118,000</td><td class="mono">62%</td><td class="mono up">+8.4%</td></tr><tr><td class="strong">Everyday Tee</td><td class="mono">$96,000</td><td class="mono">58%</td><td class="mono up">+2.1%</td></tr><tr><td class="strong">Weekender Bag</td><td class="mono">$74,000</td><td class="mono">51%</td><td class="mono down">-3.6%</td></tr><tr><td class="strong">Merino Socks 3pk</td><td class="mono">$41,000</td><td class="mono">71%</td><td class="mono up">+14.2%</td></tr><tr><td class="strong">Rain Shell</td><td class="mono">$33,000</td><td class="mono">44%</td><td class="mono down">-1.8%</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="card brief">
+    <h2>Monday brief (auto-generated)</h2>
+    <p class="hint">Generated from your Shopify, Meta and Google data</p>
+    <ol>
+      <li><b>Paid Social costs the most per customer among the big channels.</b> It drives 38% of revenue at a $42 CAC, 1.5&times; the $28 target. Pausing the lowest-ROAS ad sets from the last 7 days is the first test.</li>
+      <li><b>Email is your best margin channel, at 16% of revenue.</b> A new customer there costs almost nothing, so list growth is the cheapest lever on this page.</li>
+      <li><b>Weekender Bag is shrinking while Trail Runner grows.</b> Bag margin is 51% and its revenue fell 3.6% in four weeks. Options: reprice it, bundle it with the socks, or cut the buy.</li>
+      <li><b>Discounts are carrying growth.</b> Revenue is up 14.5% over four weeks and the promo share of orders is rising. If full-price revenue does not recover next week, discounts explain the growth.</li>
+    </ol>
+  </div>
+
+  <p class="foot">
+    Built by <b>Olowu Aduragbemi</b>, data analyst and reporting systems.<br/>
+    <a href="index.html">Read the pricing study</a> &middot; <a href="mailto:olowu.tayo200@gmail.com?subject=Catalogue%20check%20for%20my%20store">Email me for a catalogue check of your store</a><br/>
+    This dashboard is a sample built on fictional data to demonstrate format only.
+  </p>
+
+</div>
+</body>
+</html>

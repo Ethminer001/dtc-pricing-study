@@ -1,0 +1,91 @@
+{
+ "stores_usd": 71,
+ "products": 22956,
+ "currency_note": "73 stores harvested; 2 non-USD excluded from price aggregates; 71 analysed (68 confirmed USD, 3 currency unconfirmed)",
+ "median_entry_price": 19.99,
+ "median_price": 42.0,
+ "median_p90": 108.0,
+ "median_spread": 5.58,
+ "mean_anchor_share": 0.251,
+ "median_anchor_depth": 0.25,
+ "median_charm_share": 0.07,
+ "median_variant_depth": 2,
+ "median_bundle_share": 0.14,
+ "median_untyped_share": 0.02,
+ "median_stock_rate": 0.93,
+ "share_any_under_25": 0.944,
+ "share_anchor_majority": 0.169,
+ "share_anchor_heavy": 0.056,
+ "share_charm_majority": 0.169,
+ "share_round_majority": 0.662,
+ "share_bundle_none": 0.155,
+ "share_untyped_heavy": 0.127,
+ "share_spread_under_2x": 0.0,
+ "share_variant_thin": 0.577,
+ "tiers": {
+  "Accessible (median < $50)": {
+   "n": 43,
+   "anchor_share": 0.143,
+   "bundle_share": 0.179,
+   "variant_depth": 1,
+   "spread": 5.5,
+   "any_under_25": 1.0
+  },
+  "Mid ($50-$120)": {
+   "n": 22,
+   "anchor_share": 0.259,
+   "bundle_share": 0.091,
+   "variant_depth": 2.5,
+   "spread": 4.57,
+   "any_under_25": 0.909
+  },
+  "Premium ($120+)": {
+   "n": 6,
+   "anchor_share": 0.152,
+   "bundle_share": 0.174,
+   "variant_depth": 5.0,
+   "spread": 10.92,
+   "any_under_25": 0.667
+  }
+ },
+ "moves": {
+  "Has a sub-$25 entry product": {
+   "count": 67,
+   "share": 0.944
+  },
+  "Price ladder spread >= 3x (p90/p10)": {
+   "count": 63,
+   "share": 0.887
+  },
+  "Majority charm-priced (x.99 / 9-ending)": {
+   "count": 12,
+   "share": 0.169
+  },
+  "Sells bundles or multi-packs (>=10% of catalogue)": {
+   "count": 41,
+   "share": 0.577
+  },
+  "Offers a variant choice on most products (>=5)": {
+   "count": 24,
+   "share": 0.338
+  },
+  "Clean catalogue taxonomy (<=10% untyped)": {
+   "count": 56,
+   "share": 0.789
+  },
+  "Products in stock >= 90%": {
+   "count": 44,
+   "share": 0.62
+  }
+ },
+ "score_distribution": {
+  "2": 1,
+  "3": 16,
+  "4": 23,
+  "5": 22,
+  "6": 8,
+  "7": 1
+ },
+ "score_ge6": 9,
+ "score_median": 4
+}

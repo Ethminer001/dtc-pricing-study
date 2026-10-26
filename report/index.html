@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>What 71 Shopify stores do with price: a public-data teardown</title>
+<style>
+ *{box-sizing:border-box}
+ body{margin:0;padding:0 0 70px;background:#f6f6f4;color:#101828;
+   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+   -webkit-font-smoothing:antialiased;line-height:1.5}
+ .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+ .hero{background:linear-gradient(150deg,#111827 0%,#1f2937 50%,#0f766e 100%);
+   color:#fff;padding:54px 20px 46px;margin-bottom:26px}
+ .hero .in{max-width:820px;margin:0 auto;padding:0 20px}
+ .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#99d5cf;font-weight:750;margin-bottom:16px}
+ .hero h1{font-size:36px;line-height:1.15;margin:0 0 16px;letter-spacing:-1.3px;font-weight:800}
+ .hero p{font-size:16px;line-height:1.65;color:#d1d5db;margin:0 0 8px;max-width:640px}
+ .byline{font-size:12.5px;color:#9ca3af;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15)}
+ .card{background:#fff;border:1px solid #e9eaf1;border-radius:16px;padding:26px 30px;margin-bottom:20px;
+   box-shadow:0 1px 2px rgba(16,24,40,.04)}
+ h2{font-size:21px;margin:0 0 6px;letter-spacing:-.5px}
+ h2 .num{color:#0f766e;font-weight:800;margin-right:8px}
+ .kicker{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:#98a2b3;font-weight:750;margin:0 0 14px}
+ p{font-size:15px;line-height:1.7;color:#475467;margin:0 0 14px}
+ p.lead{font-size:16.5px;color:#344054}
+ b,strong{color:#101828}
+ .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:22px 0 4px}
+ .stat{background:#f8f9fd;border:1px solid #eef0f7;border-radius:12px;padding:16px}
+ .stat .v{font-size:25px;font-weight:780;letter-spacing:-.9px;line-height:1}
+ .stat .l{font-size:11px;color:#667085;margin-top:7px;line-height:1.4}
+ .finding{border-left:3px solid #0f766e;padding-left:18px;margin:26px 0}
+ .finding h3{font-size:16.5px;margin:0 0 8px;letter-spacing:-.2px}
+ .finding p{font-size:14.5px;margin-bottom:10px}
+ .callout{background:#f0f9f8;border:1px solid #bfe3df;border-radius:12px;padding:18px 22px;margin:18px 0}
+ .callout p{margin:0;font-size:14.5px;color:#115e59}
+ .warn{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:18px 22px;margin:18px 0}
+ .warn p,.warn li{font-size:14px;color:#78350f;line-height:1.65}
+ .warn h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;margin:0 0 10px;color:#92400e}
+ .chart{margin:18px 0 6px}
+ .cap{font-size:11.5px;color:#98a2b3;margin-top:6px;line-height:1.5}
+ table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0 6px}
+ th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:#98a2b3;
+   font-weight:750;padding:0 8px 10px 0;border-bottom:1px solid #eef0f5}
+ td{padding:10px 8px 10px 0;border-bottom:1px solid #f2f4f8;color:#475467}
+ tr:last-child td{border-bottom:none}
+ .mono{font-variant-numeric:tabular-nums}
+ .good{color:#027a48;font-weight:700} .bad{color:#b42318;font-weight:700}
+ .cta{background:linear-gradient(135deg,#111827,#1f2937);color:#fff;border-radius:16px;
+   padding:30px 32px;margin:24px 0 0}
+ .cta h2{color:#fff}
+ .cta p{color:#d1d5db;font-size:14.5px}
+ .cta a.alt{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);margin-left:8px}
+ .cta a{display:inline-block;background:#fff;color:#111827;text-decoration:none;
+   padding:13px 26px;border-radius:10px;font-weight:750;font-size:14px;margin-top:8px}
+ ul.tight{margin:0 0 14px;padding-left:20px}
+ ul.tight li{font-size:14.5px;line-height:1.7;color:#475467;margin-bottom:8px}
+ .foot{text-align:center;font-size:11.5px;color:#98a2b3;margin-top:30px;line-height:1.8}
+ code{background:#f1f3f9;padding:2px 6px;border-radius:4px;font-size:12.5px;color:#115e59}
+</style></head><body>
+
+<div class="hero"><div class="in">
+  <div class="eyebrow">Public-data teardown &middot; 71 storefronts &middot; 22,956 products</div>
+  <h1>Advice says price everything at $X.99.<br/>12 of the 71 stores in this study do.</h1>
+  <p>I pulled the public catalogue of 71 Shopify brands and measured their price structure: entry
+  points, ladder spread, compare-at discounts, bundles, variant depth and availability. Most stores
+  charm-price almost nothing. Compare-at prices sit on a minority of products. Most products in most
+  catalogues are in stock.</p>
+  <div class="byline">Analysis date: 24 October 2026 &nbsp;&middot;&nbsp; Source: public
+  <code style="background:rgba(255,255,255,.13);color:#e5e7eb">/products.json</code> endpoints
+  &nbsp;&middot;&nbsp; Scripts available on request</div>
+</div></div>
+
+<div class="wrap">
+
+<div class="card">
+  <div class="kicker">Why I ran this</div>
+  <p class="lead">Most operators set prices by copying the last brand they saw or a tip from TikTok.
+  I measured what 71 brands do instead.</p>
+  <p>This study covers price <b>structure</b>. It does not cover price <b>performance</b>. Every
+  number comes from public catalogue data, and the methodology section at the bottom shows how to
+  reproduce or challenge each one.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">71</div><div class="l">US storefronts</div></div>
+    <div class="stat"><div class="v">22,956</div><div class="l">products analysed</div></div>
+    <div class="stat"><div class="v">$42</div><div class="l">median price point</div></div>
+    <div class="stat"><div class="v">5.6×</div><div class="l">median price ladder spread</div></div>
+    <div class="stat"><div class="v">93%</div><div class="l">median share of products in stock</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="kicker">Finding 01 &middot; price endings</div>
+  <h2>Round prices outnumber charm prices 3 to 1.</h2>
+  <p><b>20%</b> of the 22,956 products
+  end in <code>.99</code> or a 9. 60% end in a round number. The most common price points
+  are <b>$45</b>, <b>$38</b>, <b>$35</b>, <b>$40</b> and <b>$30</b>.</p>
+  <div class="chart"><svg viewBox="0 0 680 198" width="100%" height="auto" role="img"><text x="0" y="25" font-size="13" fill="#344054" font-family="inherit">Round ($45, $70)</text><rect x="290" y="4" width="300" height="34" rx="5" fill="#f1f3f9"/><rect x="290" y="4" width="300.0" height="34" rx="5" fill="#0f766e"/><text x="602" y="26" font-size="13" font-weight="700" fill="#101828">13,787 (60%)</text><text x="0" y="72" font-size="13" fill="#344054" font-family="inherit">.99 endings</text><rect x="290" y="51" width="300" height="34" rx="5" fill="#f1f3f9"/><rect x="290" y="51" width="60.5" height="34" rx="5" fill="#99d5cf"/><text x="602" y="73" font-size="13" font-weight="700" fill="#101828">2,779 (12%)</text><text x="0" y="119" font-size="13" fill="#344054" font-family="inherit">9-ending ($29, $39)</text><rect x="290" y="98" width="300" height="34" rx="5" fill="#f1f3f9"/><rect x="290" y="98" width="38.4" height="34" rx="5" fill="#99d5cf"/><text x="602" y="120" font-size="13" font-weight="700" fill="#101828">1,767 (8%)</text><text x="0" y="166" font-size="13" fill="#344054" font-family="inherit">Other fractions</text><rect x="290" y="145" width="300" height="34" rx="5" fill="#f1f3f9"/><rect x="290" y="145" width="88.8" height="34" rx="5" fill="#99d5cf"/><text x="602" y="167" font-size="13" font-weight="700" fill="#101828">4,082 (18%)</text></svg></div>
+  <p class="cap">How each sampled product price ends. Round = whole-dollar prices not ending in 9, including round-5.
+  Percentages are of all products; the 2% priced under $10 have no bar.</p>
+
+  <p>Stores pick a style and keep it. 48 stores charm-price under
+  20% of their catalogue, 12 charm-price half or more, and few
+  sit between.</p>
+  <div class="chart"><svg viewBox="0 0 680 230" width="100%" height="auto" role="img"><line x1="34" y1="196" x2="646" y2="196" stroke="#e4e7ec"/><rect x="39.5" y="46.4" width="50.2" height="149.6" rx="3" fill="#0f766e" opacity="1.00"/><text x="64.6" y="40.4" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">40</text><rect x="100.7" y="166.1" width="50.2" height="29.9" rx="3" fill="#0f766e" opacity="0.56"/><text x="125.8" y="160.1" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">8</text><rect x="161.9" y="169.8" width="50.2" height="26.2" rx="3" fill="#0f766e" opacity="0.55"/><text x="187.0" y="163.8" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">7</text><rect x="223.1" y="184.8" width="50.2" height="11.2" rx="3" fill="#0f766e" opacity="0.49"/><text x="248.2" y="178.8" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">3</text><rect x="284.3" y="192.3" width="50.2" height="3.7" rx="3" fill="#0f766e" opacity="0.46"/><text x="309.4" y="186.3" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">1</text><rect x="345.5" y="192.3" width="50.2" height="3.7" rx="3" fill="#0f766e" opacity="0.46"/><text x="370.6" y="186.3" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">1</text><rect x="406.7" y="188.5" width="50.2" height="7.5" rx="3" fill="#0f766e" opacity="0.48"/><text x="431.8" y="182.5" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">2</text><rect x="467.9" y="181.0" width="50.2" height="15.0" rx="3" fill="#0f766e" opacity="0.51"/><text x="493.0" y="175.0" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">4</text><rect x="529.1" y="188.5" width="50.2" height="7.5" rx="3" fill="#0f766e" opacity="0.48"/><text x="554.2" y="182.5" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">2</text><rect x="590.3" y="184.8" width="50.2" height="11.2" rx="3" fill="#0f766e" opacity="0.49"/><text x="615.4" y="178.8" font-size="11" font-weight="700" fill="#101828" text-anchor="middle">3</text><text x="34.0" y="212" font-size="10" fill="#98a2b3" text-anchor="middle">0%</text><text x="156.4" y="212" font-size="10" fill="#98a2b3" text-anchor="middle">20%</text><text x="278.8" y="212" font-size="10" fill="#98a2b3" text-anchor="middle">40%</text><text x="401.2" y="212" font-size="10" fill="#98a2b3" text-anchor="middle">60%</text><text x="523.6" y="212" font-size="10" fill="#98a2b3" text-anchor="middle">80%</text><text x="646.0" y="212" font-size="10" fill="#98a2b3" text-anchor="middle">100%</text></svg></div>
+  <p class="cap">Distribution of 71 stores by share of their catalogue priced .99 or ending in 9.</p>
+  <div class="callout"><p><b>So what?</b> Within a store, price endings tend to follow one house style.
+  This study cannot say which style sells better. A catalogue that mixes endings is unusual in this
+  cohort.</p></div>
+</div>
+
+<div class="card">
+  <div class="kicker">Finding 02 &middot; discounting</div>
+  <h2>Compare-at prices are common, and most stores use them on a minority of products.</h2>
+  <p>A popular claim says DTC brands run inflated compare-at prices across the whole catalogue.
+  63 of 71 stores use compare-at pricing somewhere.
+  Among those 63, the median store carries one on <b>19%</b> of its
+  products, and <b>6%</b> of all stores carry one on 80% or more.</p>
+  <p>Where a compare-at price exists, the typical discount is <b>25%</b>.
+  Half of the stores that use them sit between 15% and 33%, and the 10th to 90th percentile runs from
+  about 10% to 46%.</p>
+  <div class="callout"><p><b>So what?</b> This measures whether a compare-at price is
+  <i>present</i>. It cannot show whether the "was" price ever sold. Check whether your own catalogue
+  applies one discount depth to a $12 item and a $200 item.</p></div>
+</div>
+
+<div class="card">
+  <div class="kicker">Finding 03 &middot; availability</div>
+  <h2>Most products are buyable. About one store in seven has a real gap.</h2>
+  <p>I checked each product for at least one buyable variant on the snapshot day. The median store has
+  <b>93%</b> of its products available. <b>31 of 71</b>
+  stores sit at 95% or above and <b>10</b> sit below 75%.</p>
+  <div class="chart"><svg viewBox="0 0 680 230" width="100%" height="auto" role="img"><line x1="34" y1="196" x2="646" y2="196" stroke="#eef0f5"/><line x1="34" y1="139" x2="646" y2="139" stroke="#eef0f5"/><line x1="34" y1="83" x2="646" y2="83" stroke="#eef0f5"/><line x1="34" y1="26" x2="646" y2="26" stroke="#eef0f5"/><rect x="59.7" y="44.2" width="71.0" height="151.8" rx="4" fill="#0f766e"/><text x="95.2" y="37.2" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">31 stores</text><text x="95.2" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">≥95%</text><rect x="182.1" y="132.3" width="71.0" height="63.7" rx="4" fill="#0f766e"/><text x="217.6" y="125.3" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">13 stores</text><text x="217.6" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">90–95%</text><rect x="304.5" y="127.5" width="71.0" height="68.5" rx="4" fill="#0f766e"/><text x="340.0" y="120.5" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">14 stores</text><text x="340.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">80–90%</text><rect x="426.9" y="176.4" width="71.0" height="19.6" rx="4" fill="#0f766e"/><text x="462.4" y="169.4" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">4 stores</text><text x="462.4" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">70–80%</text><rect x="549.3" y="151.9" width="71.0" height="44.1" rx="4" fill="#0f766e"/><text x="584.8" y="144.9" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">9 stores</text><text x="584.8" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle"><70%</text></svg></div>
+  <p class="cap">Distribution of stores by share of products with at least one buyable variant.</p>
+  <p>My first pass counted variants. That count tracked the number of sizes a store sells: a shoe
+  brand with 12 sizes shows more gaps than a one-size coffee brand (correlation with variant depth:
+  &minus;0.39). I switched to products, which removes the effect.</p>
+  <div class="warn"><h3>What this does not show</h3>
+  <p>This is a one-day snapshot, and a sold-out product can be deliberate, such as a limited drop or a
+  seasonal line. Public data cannot show whether sold-out products receive paid traffic. Answering that
+  takes Shopify inventory joined to ad-platform data, and you can run that check on your own store.</p></div>
+</div>
+
+<div class="card">
+  <div class="kicker">Finding 04 &middot; a structural checklist</div>
+  <h2>Three checks are near-universal. Four split the stores.</h2>
+  <p>I scored each store against seven structural checks. The criteria are my own, not an industry
+  standard, and they describe a catalogue without grading it. A majority-charm catalogue has a style,
+  which carries no merit of its own.</p>
+  <div class="chart"><svg viewBox="0 0 680 339" width="100%" height="auto" role="img"><text x="0" y="25" font-size="13" fill="#344054" font-family="inherit">Has a sub-$25 entry product</text><rect x="340" y="4" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="4" width="250.0" height="34" rx="5" fill="#0f766e"/><text x="602" y="26" font-size="13" font-weight="700" fill="#101828">94%</text><text x="0" y="72" font-size="13" fill="#344054" font-family="inherit">Price ladder spread &gt;= 3x (p90/p10)</text><rect x="340" y="51" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="51" width="236.7" height="34" rx="5" fill="#0f766e"/><text x="602" y="73" font-size="13" font-weight="700" fill="#101828">89%</text><text x="0" y="119" font-size="13" fill="#344054" font-family="inherit">Clean catalogue taxonomy (&lt;=10% untyped)</text><rect x="340" y="98" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="98" width="210.1" height="34" rx="5" fill="#0f766e"/><text x="602" y="120" font-size="13" font-weight="700" fill="#101828">79%</text><text x="0" y="166" font-size="13" fill="#344054" font-family="inherit">Products in stock &gt;= 90%</text><rect x="340" y="145" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="145" width="164.9" height="34" rx="5" fill="#0f766e"/><text x="602" y="167" font-size="13" font-weight="700" fill="#101828">62%</text><text x="0" y="213" font-size="13" fill="#344054" font-family="inherit">Sells bundles or multi-packs (&gt;=10% of catalogue)</text><rect x="340" y="192" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="192" width="154.3" height="34" rx="5" fill="#0f766e"/><text x="602" y="214" font-size="13" font-weight="700" fill="#101828">58%</text><text x="0" y="260" font-size="13" fill="#344054" font-family="inherit">Offers a variant choice on most products (&gt;=5)</text><rect x="340" y="239" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="239" width="90.4" height="34" rx="5" fill="#0f766e"/><text x="602" y="261" font-size="13" font-weight="700" fill="#101828">34%</text><text x="0" y="307" font-size="13" fill="#344054" font-family="inherit">Majority charm-priced (x.99 / 9-ending)</text><rect x="340" y="286" width="250" height="34" rx="5" fill="#f1f3f9"/><rect x="340" y="286" width="45.2" height="34" rx="5" fill="#0f766e"/><text x="602" y="308" font-size="13" font-weight="700" fill="#101828">17%</text></svg></div>
+  <p class="cap">Share of the 71 stores passing each check.</p>
+  <p>A sub-$25 entry product, a price ladder of 3&times; or more, and a clean taxonomy appear in most
+  stores, so passing them says little. The other four vary much more.</p>
+  <div class="chart"><svg viewBox="0 0 680 230" width="100%" height="auto" role="img"><line x1="34" y1="196" x2="646" y2="196" stroke="#eef0f5"/><line x1="34" y1="139" x2="646" y2="139" stroke="#eef0f5"/><line x1="34" y1="83" x2="646" y2="83" stroke="#eef0f5"/><line x1="34" y1="26" x2="646" y2="26" stroke="#eef0f5"/><rect x="55.4" y="189.4" width="59.2" height="6.6" rx="4" fill="#115e59"/><text x="85.0" y="182.4" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">1 stores</text><text x="85.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">2/7</text><rect x="157.4" y="90.4" width="59.2" height="105.6" rx="4" fill="#115e59"/><text x="187.0" y="83.4" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">16 stores</text><text x="187.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">3/7</text><rect x="259.4" y="44.2" width="59.2" height="151.8" rx="4" fill="#115e59"/><text x="289.0" y="37.2" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">23 stores</text><text x="289.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">4/7</text><rect x="361.4" y="50.8" width="59.2" height="145.2" rx="4" fill="#115e59"/><text x="391.0" y="43.8" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">22 stores</text><text x="391.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">5/7</text><rect x="463.4" y="143.2" width="59.2" height="52.8" rx="4" fill="#115e59"/><text x="493.0" y="136.2" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">8 stores</text><text x="493.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">6/7</text><rect x="565.4" y="189.4" width="59.2" height="6.6" rx="4" fill="#115e59"/><text x="595.0" y="182.4" font-size="11.5" font-weight="700" fill="#101828" text-anchor="middle">1 stores</text><text x="595.0" y="213" font-size="10.5" fill="#98a2b3" text-anchor="middle">7/7</text></svg></div>
+  <p class="cap">Stores by number of the seven checks passed. Median score:
+  4/7. 1 store passes all seven, and 9 score 6 or more.</p>
+</div>
+
+<div class="card">
+  <div class="kicker">Finding 05 &middot; price tiers</div>
+  <h2>How behaviour changes with price tier</h2>
+  <p>Splitting the cohort by median price shows these differences:</p>
+  <table>
+    <thead><tr><th>Price tier</th><th>Stores</th><th>Uses anchors</th><th>Bundles</th>
+    <th>Variants</th><th>Ladder spread</th></tr></thead>
+    <tbody><tr><td class='strong'>Accessible (median &lt; $50)</td><td class='mono'>43</td><td class='mono'>14%</td><td class='mono'>18%</td><td class='mono'>1.0</td><td class='mono'>5.5×</td></tr><tr><td class='strong'>Mid ($50-$120)</td><td class='mono'>22</td><td class='mono'>26%</td><td class='mono'>9%</td><td class='mono'>2.5</td><td class='mono'>4.6×</td></tr><tr><td class='strong'>Premium ($120+)</td><td class='mono'>6</td><td class='mono'>15%</td><td class='mono'>17%</td><td class='mono'>5.0</td><td class='mono'>10.9×</td></tr></tbody>
+  </table>
+  <p>Variant depth rises with price tier: 1.0, 2.5, then 5.0 variants per product. The premium tier has
+  the widest ladder (10.9&times;), and the middle tier has a narrower ladder than the accessible tier.
+  Compare-at use peaks in the middle tier. The premium row holds only
+  6 stores, so treat it as a hypothesis.</p>
+</div>
+
+<div class="card">
+  <div class="kicker">Exploratory &middot; read with caution</div>
+  <h2>Stores with bundles tend to carry fewer variants.</h2>
+  <p>The 41 stores with a bundle or multi-pack programme have a median of
+  <b>1</b> variants per product. The 11 stores with almost no bundles have a
+  median of <b>7</b>.</p>
+  <div class="chart"><svg viewBox="0 0 680 104" width="100%" height="auto" role="img"><text x="0" y="25" font-size="13" fill="#344054" font-family="inherit">Sells bundles / multi-packs</text><rect x="290" y="4" width="300" height="34" rx="5" fill="#f1f3f9"/><rect x="290" y="4" width="37.5" height="34" rx="5" fill="#0f766e"/><text x="602" y="26" font-size="13" font-weight="700" fill="#101828">1 variants</text><text x="0" y="72" font-size="13" fill="#344054" font-family="inherit">Does not sell bundles</text><rect x="290" y="51" width="300" height="34" rx="5" fill="#f1f3f9"/><rect x="290" y="51" width="262.5" height="34" rx="5" fill="#0f766e"/><text x="602" y="73" font-size="13" font-weight="700" fill="#101828">7 variants</text></svg></div>
+  <p class="cap">Median variants per product. Bundle stores: &ge;10% of products flagged as
+  bundles. No-bundle stores: &lt;2%.</p>
+  <p>I read no strategy into this. The bundle flag comes from product titles (pack, set, kit, refill),
+  the comparison group has 11 stores, and category may explain the gap: consumables get
+  bundled and apparel gets sizes. Check your own catalogue instead of treating this as evidence.</p>
+</div>
+
+<div class="card" style="border-color:#bfe3df;background:#f7fbfa">
+  <div class="kicker">Read this before you quote any of it</div>
+  <h2>What this study can and cannot tell you</h2>
+  <p>This study has six limits:</p>
+  <ul class="tight">
+    <li><b>It measures structure, not outcomes.</b> Public catalogue data holds no revenue, traffic,
+    conversion rate or ad spend, so nothing here shows that a pattern causes sales. The test of cause is
+    an A/B test on your own store.</li>
+    <li><b>Survivorship.</b> The sample holds brands still trading and still findable. Brands that closed
+    may have used the same pricing.</li>
+    <li><b>The sample is not random.</b> I selected 71 English-language, US-facing Shopify brands from
+    well-known DTC names, including large ones (Allbirds, Everlane and Fashion Nova). Small stores may
+    differ. The study covers Shopify only, with no Amazon or marketplace brands.</li>
+    <li><b>Snapshots drift.</b> I pulled the data on 24 October 2026. Prices, stock and catalogues change
+    weekly, so rerunning the scripts gives different numbers.</li>
+    <li><b>Some definitions are mine.</b> The seven checks in Finding 04 are my criteria. Bundles come from
+    title keywords, which flag some false positives and miss some real bundles.</li>
+    <li><b>Three currencies are unconfirmed.</b> Three of the 71 stores did not expose a currency. I
+    treat them as USD because they are US-facing brands.</li>
+  </ul>
+  <p>This report publishes no store-level scores or rankings.</p>
+</div>
+
+<div class="card">
+  <div class="kicker">Ten minutes</div>
+  <h2>Three checks for your own store</h2>
+  <ol class="tight" style="padding-left:22px">
+    <li><b>Price endings.</b> Export your product prices and count the distinct endings. More than two
+    suggests nobody chose a house style.</li>
+    <li><b>Variants and bundles.</b> Count your median variants per product and the share of your
+    catalogue that is a bundle or multi-pack. If both are low, you have no tested way to raise order
+    value.</li>
+    <li><b>Stock and ad spend.</b> List your out-of-stock variants and check which of those products
+    had active campaigns last month. Each match is ad spend sent to a sold-out product.</li>
+  </ol>
+  <p>Most brands cannot answer the third question, because Shopify and the ad platforms hold the data
+  in separate places.</p>
+  <div class="cta">
+    <h2>I build this for DTC brands</h2>
+    <p>I build reporting that joins Shopify, ad platforms and margin in one dashboard and writes the
+    weekly summary in plain English. The sample below uses fictional data.</p>
+    <a href="demo-dashboard.html">See the sample dashboard</a>
+    <a class="alt" href="mailto:olowu.tayo200@gmail.com?subject=Catalogue%20check%20for%20my%20store">Email me for a catalogue check of your store</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="kicker">Methodology</div>
+  <h2>How I built it</h2>
+  <ul class="tight">
+    <li><b>Data source.</b> Every Shopify storefront publishes its catalogue at
+    <code>/products.json</code>, the feed that powers its own product pages. The collection used no HTML
+    scraping, no login and no API key. I ran 6 concurrent requests with throttling and a 1,000-product
+    cap per store.</li>
+    <li><b>Sample.</b> 73
+    candidate domains were probed, and all exposed a public catalogue. I excluded two storefronts (one
+    CAD, one AUD) from price aggregates, which leaves 71 stores.</li>
+    <li><b>Product count.</b> 22,956 products. Stores with more than 1,000 products contribute their
+    first 1,000, so very large catalogues are sampled.</li>
+    <li><b>Price used.</b> The lowest variant price per product, which is the entry price a shopper
+    sees.</li>
+    <li><b>Availability.</b> A product counts as in stock if at least one variant is available. I
+    rejected a variant-level count because it tracks how many sizes a store sells.</li>
+    <li><b>Charm pricing.</b> A price counts as charm if it is x.99, or a whole-dollar price ending in 9
+    (for example $29), at $10 or above.</li>
+    <li><b>Anchor depth.</b> <code>(compare_at − price) / compare_at</code>, taken on products where
+    a compare-at price exists and exceeds the sale price.</li>
+    <li><b>Currency.</b> I checked each store through <code>/cart.js</code> or its product-page markup.
+    68 of the 71 stores are confirmed USD. Three exposed no currency to automated checks, and I
+    include them as USD because they are US-facing brands. That is the one assumption in the
+    study.</li>
+    <li><b>Dates.</b> I harvested the data on 24 October 2026. The scripts (<code>harvest.py</code>,
+    <code>analyze.py</code>) are available on request.</li>
+  </ul>
+</div>
+
+<p class="foot">
+  <b>Olowu Aduragbemi</b>, data analyst. I build reporting systems for e-commerce brands.<br/>
+  <a href="mailto:olowu.tayo200@gmail.com">olowu.tayo200@gmail.com</a> &middot;
+  <a href="https://www.linkedin.com/in/eriioluwa">LinkedIn</a> &middot; Dataset and scripts available on request.
+</p>
+
+</div></body></html>

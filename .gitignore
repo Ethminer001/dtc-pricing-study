@@ -1,0 +1,4 @@
+data/*
+!data/summary.json
+case-study.html
+__pycache__/
